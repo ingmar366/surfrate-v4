@@ -1,0 +1,22 @@
+.create-spot {
+  & > p {
+    text-align: center;
+    width: 80%;
+    margin: auto;
+  }
+
+  & > button {
+    justify-self: center;
+  }
+
+  &__form {
+    margin: 0 1rem;
+    display: grid;
+    gap: 2rem;
+  }
+}
+
+[data-state="closed"] .create-spot,
+[data-state="closing"] .create-spot {
+  display: none;
+}

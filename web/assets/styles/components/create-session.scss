@@ -1,0 +1,28 @@
+.create-session {
+  color: $color-neutral;
+  display: grid;
+  grid-template-columns: 48% 48%;
+  gap: 1.2rem;
+  margin: 0 1rem;
+
+  & > button {
+    justify-self: center;
+  }
+  & > .input-wrapper > select,
+  & > .input-wrapper > input,
+  .input-wrapper > textarea {
+    margin-bottom: 1.2rem;
+  }
+}
+
+.input-wrapper {
+  &:has(.create-session__conditions),
+  &:has(.create-session__wind),
+  &:has(.create-session__textarea) {
+    grid-column: 1/-1;
+  }
+}
+
+.create-session > .button-submit {
+  grid-column: 1/-1;
+}

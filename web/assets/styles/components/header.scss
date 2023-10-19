@@ -1,0 +1,8 @@
+.header > button {
+  position: fixed;
+  right: 2rem;
+  top: 2rem;
+  z-index: 1000;
+  color: white;
+  background-color: lighten($color-main, 12%);
+}

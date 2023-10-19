@@ -1,0 +1,20 @@
+{# ---
+title: This is a New Path 
+pagination:
+  data: test
+  size: 1
+  alias: to
+permalink: "{{ to.title | slugify }}/" 
+---  #}
+
+{% extends "templates/_layouts/common.html" %} 
+
+{% block content %}	
+<main class="surfrate">
+    {% include "templates/_includes/menu.html" %}
+    <div class="map" data-component="Map" id="map">
+    </div>
+</main>
+
+{% endblock %}
+

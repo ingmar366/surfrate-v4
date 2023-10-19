@@ -1,0 +1,91 @@
+/* Baseline */
+
+:root {
+  --viewport-width: calc(100vw - var(--scrollbar-width, 0px));
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+  font-family: "Lato", sans-serif;
+}
+
+body {
+  scroll-behavior: inherit;
+  font-size: 1.6rem;
+  overflow: hidden;
+  position: relative;
+  min-height: 100vh;
+  color: #fff;
+}
+
+P {
+  line-height: 24px;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+// Animations:
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+}
+@keyframes slide-out {
+  to {
+    transform: translateX(-100%);
+  }
+}
+@keyframes pop-up {
+  from {
+    transform: translateY(50%);
+  }
+}
+@keyframes pop-down {
+  to {
+    transform: translateY(50%);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes collapse-in {
+  to {
+    // translate: (0 -100%);
+    height: 0;
+  }
+}
+
+@keyframes collapse-out {
+  to {
+    translate: (0);
+    height: inherit;
+  }
+}
+
+@keyframes delayed-show {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

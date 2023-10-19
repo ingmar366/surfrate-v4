@@ -1,0 +1,10 @@
+<div class="create-spot" hidden data-component="NewSpot" data-new-spot:path="{{ env.API_PROXY_BASE_URL }}">
+    <p data-new-spot:message >Click on the map to create a new spot.</p>
+    <form class="create-spot__form" hidden data-new-spot:form> 
+        <div class="input-wrapper">
+            <input type="text" placeholder="Spot Name" required name="spot-name" pattern="\w{3,16}" oninvalid="this.setCustomValidity('A spot needs to have a name of atleast 3 symbols')" oninput="this.setCustomValidity('')">
+            <label class="base-label">Spot Name</label>
+        </div>
+        <button class="button-submit" type="submit">Submit</button>
+    </form> 
+</div>

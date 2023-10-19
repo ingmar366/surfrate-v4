@@ -1,0 +1,82 @@
+.spot-overview {
+  display: grid;
+  gap: 1rem;
+  padding-left: 3rem;
+}
+
+.spot-overview__item {
+  display: flex;
+}
+
+@mixin spot-overview-before-after {
+  content: "";
+  position: absolute;
+  background-color: $color-neutral;
+}
+
+.spot-overview__button {
+  width: calc(100% + 4rem);
+  border-radius: 3px;
+  clip-path: polygon(10% 0, 120% 0, 120% 120%, 10% 120%, 15% 50%);
+  translate: -4.5rem;
+  position: relative;
+  z-index: 1;
+  height: 5rem;
+  filter: drop-shadow(1px -2px 5px rgba(#000000, 0.7));
+  border: 1px solid $color-neutral;
+
+  &:before {
+    @include spot-overview-before-after;
+    left: 8.5%;
+    top: 0;
+    width: 1rem;
+    height: 2px;
+    rotate: 50deg;
+  }
+
+  &:after {
+    @include spot-overview-before-after;
+    left: 8.5%;
+    bottom: -2%;
+    width: 1rem;
+    height: 2px;
+    rotate: 132deg;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+[selected] .spot-overview__button {
+  background: linear-gradient(to right, #00bcd4, #0097a7);
+}
+
+.spot-overview__circle {
+  min-width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 1px solid $color-neutral;
+  color: $color-neutral;
+  background: $color-main;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  filter: drop-shadow(0rem 0mm 5px rgba(#003647, 1));
+  position: relative;
+
+  &:before {
+    @include spot-overview-before-after;
+    right: -2rem;
+    width: 2rem;
+    height: 2px;
+  }
+  &:after {
+    @include spot-overview-before-after;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    right: -2rem;
+  }
+}

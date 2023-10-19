@@ -1,0 +1,23 @@
+.general-info {
+  padding: 2rem;
+  & > h3 {
+    text-align: center;
+    margin-bottom: 1.6rem;
+    font-size: 3.2rem;
+    letter-spacing: 0.1rem;
+  }
+  & > p {
+    font-size: 1.6rem;
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+}
+
+.general-info__signup {
+  display: grid;
+  justify-items: center;
+  margin-top: 3.2rem;
+  & .input-wrapper {
+    margin-bottom: 2rem;
+  }
+}

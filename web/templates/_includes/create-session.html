@@ -1,0 +1,49 @@
+<form class="create-session" hidden>
+    
+    {# TODO swell direction, wind direction #}
+   
+    <div class="input-wrapper">
+        <select id="create-session-conditions" class="select create-session__conditions" name="conditions" required oninvalid="this.setCustomValidity('Conditions required for making a session')" oninput="this.setCustomValidity('')">
+            <option value="">Conditions</option>
+            <option value="clean">Clean</option>
+            <option value="slopy">Slopy</option>
+            <option value="weak">Weak</option>
+            <option value="windy">Windy</option>
+        </select> 
+        <label class="base-label" for="create-session-conditions">Conditions </label>
+    </div>
+
+    <div class="input-wrapper"> 
+        <select id="create-session-wind" class="select create-session__wind" name="wind" required oninvalid="this.setCustomValidity('Wind required for creating a session')" oninput="this.setCustomValidity('')">
+            <option value="">Wind</option>
+            <option value="onshore">On-shore</option>
+            <option value="offshore">Offshore</option>
+            <option value="cross">Cross-wind</option>
+            <option value="no">No wind</option>
+        </select> 
+        <label class="base-label" for="create-session-wind">Wind </label>
+    </div>
+    <div class="input-wrapper">
+        <input id="create-session-strength" type="number" min="1" max="10" step="1" required name="strength" placeholder="strength" />
+        <label class="base-label" for="create-session-strength">Strength </label>
+    </div>
+    <div class="input-wrapper"> 
+        <input id="create-session-score" type="number" min="1" max="20" required placeholder="Score" name="overal-score" oninvalid="this.setCustomValidity('Score is required for making a session')" oninput="this.setCustomValidity('')" />
+        <label class="base-label" for="create-session-score">Score </label>
+    </div>
+    <div class="input-wrapper"> 
+        <textarea 
+        id="create-session-information"class="create-session__textarea"  rows="4" placeholder="Additional information"></textarea>
+        <label class="base-label" for="create-session-information">Additional information </label>
+    </div> 
+    <div class="image-wrapper"> 
+        <input id="create-session-image"type="file" name="session-image" accept="image/png, image/jpeg"/>
+        <label class="button-submit" for="create-session-image">Add Image</label>
+    </div>
+    <div class="input-wrapper"> 
+        <input type="date" name="session-date" required  oninvalid="this.setCustomValidity('Date required')" oninput="this.setCustomValidity('')" />
+        <label class="button-submit" for="create-session-image">Date</label>
+
+    </div>
+    <button class="button-submit" type="submit">Submit</button>
+</form>

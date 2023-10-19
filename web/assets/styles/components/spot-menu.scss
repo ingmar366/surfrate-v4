@@ -1,0 +1,48 @@
+.spot-menu {
+  padding: 1rem;
+  display: grid;
+  gap: 2rem;
+}
+
+.spot-menu__select {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: center;
+  gap: 2rem;
+
+  & button {
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 0.5rem;
+    cursor: pointer;
+
+    &:after {
+      content: "";
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      position: absolute;
+      bottom: 1px;
+      left: -100%;
+    }
+    &:hover {
+      &:after {
+        animation: slide-in 0.2s forwards;
+      }
+    }
+  }
+}
+
+[data-active]:after {
+  animation: slide-in 0.2s forwards;
+}
+
+@keyframes slide-in {
+  to {
+    left: 0;
+  }
+}

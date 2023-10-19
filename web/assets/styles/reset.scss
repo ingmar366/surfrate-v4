@@ -1,0 +1,42 @@
+/* Reset */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  box-sizing: border-box;
+  border-style: none;
+  background-color: transparent;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+}
+
+li {
+  list-style-type: none;
+}
+
+a,
+u {
+  text-decoration-line: none;
+}
+
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration {
+  display: none;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+svg {
+  fill: currentColor;
+}
+
+*[hidden] {
+  display: none !important;
+}

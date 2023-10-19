@@ -1,0 +1,18 @@
+.select:has(option:checked:not([value=""])) {
+  animation: select-active-height 0.3s forwards ease-out;
+  & + .base-label {
+    animation: label-in 0.3s forwards ease-out;
+  }
+}
+
+.select {
+  background-color: #fff;
+  color: #777;
+  text-align: center;
+  text-align: -webkit-center;
+  font-size: 1.2rem;
+  position: relative;
+  appearance: none;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}

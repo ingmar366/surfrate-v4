@@ -1,0 +1,62 @@
+@property --text-underline-offset {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 4px;
+}
+
+@mixin headings {
+  & > h1,
+  & > h2,
+  & > h3 {
+    @content;
+  }
+}
+
+@mixin hover-underline(
+  $thickness: 1px,
+  $color: currentColor,
+  $offset: 0.5em,
+  $selector: null
+) {
+  $child-selector: "";
+  @if $selector {
+    $child-selector: "> " + $selector;
+  }
+
+  @media (hover: hover) {
+    & #{$child-selector} {
+      transition: text-decoration-color 200ms 50ms,
+        --text-underline-offset 200ms 50ms;
+      text-decoration: underline transparent $thickness;
+      text-underline-offset: var(--text-underline-offset, $offset);
+    }
+
+    &:hover #{$child-selector} {
+      --text-underline-offset: #{$offset};
+      text-decoration-color: $color;
+    }
+  }
+}
+
+@mixin hover-zoom($factor: 1.075, $selector: null) {
+  $child-selector: "";
+  @if $selector {
+    $child-selector: "> " + $selector;
+  }
+
+  @media (hover: hover) {
+    & #{$child-selector} {
+      transition: transform 200ms 50ms;
+    }
+
+    &:hover #{$child-selector} {
+      transform: scale($factor);
+    }
+  }
+}
+
+@import "styles/reset";
+@import "styles/variables.scss";
+@import "styles/base";
+@import "styles/mixins.scss";
+@import "styles/components/_index.scss";

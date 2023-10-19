@@ -1,0 +1,15 @@
+<div class="general-info" data-menu:information>
+    <h3>Welcome</h3>
+    <p>Surfrate is a simple platform to record and register your surf sessions. 
+        At this moment the application works on invites only. Would you like an invite? Fill out the contact form and I will do my best that you get access (no guarantee).
+    </p>
+    <p>Hope you have a nice day!</p>
+
+    <form name="contact" method="POST" data-netlify="true" class="general-info__signup">
+        <div class="input-wrapper">
+            <input type="email" placeholder="E-mail" required name="email" oninvalid="this.setCustomValidity('E-mail required for signing up')" oninput="this.setCustomValidity('')">
+            <label class="base-label">E-mail</label>
+        </div>
+        <button class="button-submit" type="submit">Submit</button>
+    </form>
+</div>
