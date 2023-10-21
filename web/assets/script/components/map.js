@@ -13,11 +13,11 @@ _surfrate.components.Map = class Map extends _surfrate.components.Base {
     this.listen(document, "_surfrate.map.click", () =>
       this.map.on("click", this.mapClick)
     );
-    this.createMarkers();
 
     this.listen(document.body, "_surfrate.spot.created", this.createMarkers);
     this.listen(document.body, "_surfrate.spot.click", this.zoomTo);
-    this.listen(document.body, "_surfrate.user.logout", this.initializeMap);
+    this.listen(document.body, "_surfrate.user.logout", this.clearMarkers);
+    this.createMarkers();
   }
 
   initializeMap = () => {
@@ -41,9 +41,9 @@ _surfrate.components.Map = class Map extends _surfrate.components.Base {
     this.map.off("click", this.mapClick);
   };
 
-  createMarkers = () => {
+  createMarkers = async () => {
     this.clearMarkers();
-    const spots = localStorage.getSpots();
+    const spots = await localStorage.getSpots();
     if (!spots) return;
     spots.forEach((spot) => {
       const [lng, lat] = spot.location.coordinates;

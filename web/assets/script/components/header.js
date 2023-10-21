@@ -14,17 +14,23 @@ _surfrate.components.Header = class Header extends _surfrate.components.Base {
     this.toggleLoginLogout();
     netlifyIdentity.on("login", this.getUserSpots);
     netlifyIdentity.on("logout", this.onLogout);
+    if (localStorage.getItem("gotrue.user") && !localStorage.getItem("spots"))
+      this.getUserSpots();
   }
 
-  getUserSpots = async () => {
+  loginHandler = () => {
     this.toggleLoginLogout();
+    this.getUserSpots();
+  };
+
+  getUserSpots = async () => {
     const result = await this.fetching(this.params.path + "/spot", "get").catch(
       (err) => {
         // TODO proper error handling
         console.log(err);
       }
     );
-    localStorage.spots = JSON.stringify(result.detail);
+    localStorage.setItem("spots", JSON.stringify(result.detail));
     this.dispatch(this.root, "_surfrate.user.login");
   };
 

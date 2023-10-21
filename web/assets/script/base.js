@@ -12,7 +12,10 @@ String.prototype.toKebabCase = function () {
   return this.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 };
 
-Storage.prototype.getSpots = function () {
+Storage.prototype.getSpots = async function () {
+  const spots = JSON.parse(this.getItem("spots"));
+  if (spots) return spots;
+  await new Promise((resolve) => setTimeout(resolve, 200));
   return JSON.parse(this.getItem("spots"));
 };
 

@@ -11,7 +11,8 @@ _surfrate.components.Menu = class Menu extends _surfrate.components.Base {
     this.params = params;
 
     this.listen(elements.controll, "click", this.menuControll);
-    if (localStorage.getSpots()) this.toggleInformation();
+
+    localStorage.getSpots().then((res) => res && this.toggleInformation());
 
     setTimeout(
       () =>

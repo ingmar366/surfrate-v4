@@ -25,25 +25,27 @@ _surfrate.components.SpotOverview = class SpotOverview extends (
   }
 
   renderSpots = () => {
-    const spots = localStorage.getSpots();
-    if (!spots) return;
-    const template = this.elements.template.innerHTML;
-    const renderSpots = spots
-      .map(({ location, name }, index) => {
-        const [lng, lat] = location.coordinates;
-        const coordinates = `data-coordinates="${lat},${lng}"`;
-        return template
-          .replace("name", name)
-          .replace("number", index)
-          .replace('coordinates=""', coordinates);
-      })
-      .join("\n");
-    this.root.innerHTML = renderSpots;
+    localStorage.getSpots().then((spots) => {
+      if (!spots) return;
 
-    this.allSpots = this.root.querySelectorAll("[spot]");
-    this.allSpots.forEach((spot) =>
-      this.listen(spot, "click", this.selectSpot)
-    );
+      const template = this.elements.template.innerHTML;
+      const renderSpots = spots
+        .map(({ location, name }, index) => {
+          const [lng, lat] = location.coordinates;
+          const coordinates = `data-coordinates="${lat},${lng}"`;
+          return template
+            .replace("name", name)
+            .replace("number", index)
+            .replace('coordinates=""', coordinates);
+        })
+        .join("\n");
+      this.root.innerHTML = renderSpots;
+
+      this.allSpots = this.root.querySelectorAll("[spot]");
+      this.allSpots.forEach((spot) =>
+        this.listen(spot, "click", this.selectSpot)
+      );
+    });
   };
 
   selectSpot = ({ target }) => {

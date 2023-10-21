@@ -70,7 +70,6 @@ const watch = () => {
   gulp.watch("./assets/script", async () => {
     await del(glob.sync("./build/**/*.js"));
     buildScript();
-    browsersync.reload();
   });
 };
 
