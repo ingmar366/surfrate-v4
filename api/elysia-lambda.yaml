@@ -1,0 +1,9 @@
+deploy: app/index.js
+name: elysia-lambda
+region: eu-west-1
+memory: "128"
+arch: arm64
+description: Elysia Lambda
+role: arn:aws:lambda:eu-west-1:815364523655:function:surfrate
+layers:
+  - arn:aws:lambda:eu-west-1:815364523655:layer:bun:5

@@ -1,0 +1,19 @@
+{
+  "name": "api",
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "bun run --watch app/index.js",
+    "deploy": "elysia-lambda --config elysia-lambda.yaml"
+  },
+  "dependencies": {
+    "@elysiajs/cors": "^0.6.0",
+    "dotenv": "^16.3.1",
+    "elysia": "^0.7.17",
+    "elysia-lambda": "^0.0.7",
+    "jwt-decode": "^3.1.2",
+    "mongoose": "^7.4.2"
+  }
+}
