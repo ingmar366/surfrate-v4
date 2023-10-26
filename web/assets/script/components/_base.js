@@ -24,7 +24,7 @@ _surfrate.components.Base = class {
   fetching(path, method, detail = undefined) {
     const token = localStorage.token();
     return fetch(path, {
-      method,
+      method: method,
       headers: {
         "Content-Type": "application/json",
         ...(token ? { Authorization: `Bearer ${token}` } : ""),

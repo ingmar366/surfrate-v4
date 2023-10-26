@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "${workspaceFolder}/web/bin/build.sh",
+      "options": {
+        "cwd": "${workspaceFolder}/web"
+      }
+    },
+    {
+      "label": "start",
+      "type": "shell",
+      "command": "${workspaceFolder}/web/bin/run.sh",
+      "options": {
+        "cwd": "${workspaceFolder}/web"
+      }
+    }
+  ]
+}

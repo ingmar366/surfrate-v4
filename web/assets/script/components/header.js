@@ -25,7 +25,7 @@ _surfrate.components.Header = class Header extends _surfrate.components.Base {
 
   getUserSpots = async () => {
     const result = await this.fetching(this.params.path + "/spot", "get").catch(
-      (err) => {
+      async (err) => {
         // TODO proper error handling
         console.log(err);
       }

@@ -1,7 +1,6 @@
 const { Elysia } = require("elysia");
 const { userRoutes } = require("./routes/userRoutes");
 const { spotRoutes } = require("./routes/spotRoutes");
-const { cors } = require("@elysiajs/cors");
 const { lambda } = require("elysia-lambda");
 
 const mongoose = require("mongoose");
@@ -22,12 +21,23 @@ mongoose
 const handler = new Elysia();
 handler
   .use(lambda())
-  .use(cors())
 
   .use(userRoutes)
   .use(spotRoutes)
-  .get("/", () => "Hello Elysia")
-  .get("", () => "Hello Elysia")
+  .get("/", ({ set }) => {
+    set.status = 200;
+    return {
+      status: "success",
+      message: "Hello Elysia",
+    };
+  })
+  .get("", ({ set }) => {
+    set.status = 200;
+    return {
+      status: "success",
+      message: "Hello Elysia",
+    };
+  })
   .listen(3000);
 
 export default { handler };
