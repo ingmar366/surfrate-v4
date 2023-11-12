@@ -7,10 +7,10 @@ import {media} from 'sanity-plugin-media'
 
 export default defineConfig({
   name: 'default',
-  title: 'e-commerce',
+  title: 'surfrate',
 
-  projectId: '85iwh34h',
-  dataset: 'production',
+  projectId: 'w42b1yes',
+  dataset: 'default',
 
   plugins: [deskTool({structure}), visionTool(), media()],
 

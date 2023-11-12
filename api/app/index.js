@@ -1,6 +1,7 @@
 const { Elysia } = require("elysia");
 const { userRoutes } = require("./routes/userRoutes");
 const { spotRoutes } = require("./routes/spotRoutes");
+const { cors } = require("@elysiajs/cors");
 const { lambda } = require("elysia-lambda");
 
 const mongoose = require("mongoose");
@@ -14,7 +15,7 @@ mongoose
   .connect(DB, {
     useNewUrlParser: true,
   })
-  .then((res) => {
+  .then(() => {
     console.log(`DB connection succesful!`);
   });
 

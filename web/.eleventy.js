@@ -13,6 +13,8 @@ module.exports = function (eleventyConfig) {
     }
   });
 
+  eleventyConfig.addPassthroughCopy({ "auth_config.json": "auth_config.json" });
+
   Object.entries(nunjucksConfig.filters).forEach(([key, value]) =>
     eleventyConfig.addNunjucksFilter(key, value)
   );
@@ -25,6 +27,8 @@ module.exports = function (eleventyConfig) {
       input: "templates",
       output: "build",
       data: "../data",
+      includes: "_includes",
+      layouts: "_layouts",
     },
     templateFormats: ["md", "njk", "html"],
     markdownTemplateEngine: "njk",

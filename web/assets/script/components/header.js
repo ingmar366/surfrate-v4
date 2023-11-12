@@ -2,25 +2,52 @@ _surfrate.components.Header = class Header extends _surfrate.components.Base {
   root;
   elements;
   params;
+  auth0Client;
 
   constructor(root, elements, params) {
     super();
-
     this.root = root;
     this.elements = elements;
     this.params = params;
 
-    this.listen(elements.login, "click", this.loginPopup);
+    this.getConfig();
+
     this.toggleLoginLogout();
-    netlifyIdentity.on("login", this.getUserSpots);
-    netlifyIdentity.on("logout", this.onLogout);
-    if (localStorage.getItem("gotrue.user") && !localStorage.getItem("spots"))
-      this.getUserSpots();
+    // netlifyIdentity.on("login", this.getUserSpots);
+    // netlifyIdentity.on("logout", this.onLogout);
+    // if (localStorage.getItem("gotrue.user") && !localStorage.getItem("spots"))
+    // this.getUserSpots();
   }
 
   loginHandler = () => {
     this.toggleLoginLogout();
-    this.getUserSpots();
+    // this.getUserSpots();
+  };
+
+  getConfig = async () => {
+    const config = await fetch("/auth_config.json").then((res) => res.json());
+    this.auth0Client = await auth0.createAuth0Client({
+      domain: config.domain,
+      clientId: config.clientId,
+    });
+    this.listen(this.elements.login, "click", this.loginUser);
+
+    const url = new URLSearchParams(window.href);
+    console.log(url);
+    if (url.get("state")) {
+      console.log(`hello`);
+      const res = await this.auth0Client.handleRedirectCallback();
+      console.log(res);
+    }
+    return;
+  };
+
+  loginUser = () => {
+    this.auth0Client.loginWithRedirect({
+      authorizationParams: {
+        redirect_uri: window.location.origin,
+      },
+    });
   };
 
   getUserSpots = async () => {
@@ -44,6 +71,4 @@ _surfrate.components.Header = class Header extends _surfrate.components.Base {
     const loggedIn = localStorage.getItem("gotrue.user") ? true : false;
     this.elements.login.textContent = loggedIn ? "Logout" : "login";
   };
-
-  loginPopup = () => netlifyIdentity.open();
 };

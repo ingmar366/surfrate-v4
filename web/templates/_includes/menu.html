@@ -1,8 +1,8 @@
 <aside class="menu" data-component="Menu" data-state="open"> 
     <figure class="menu__logo" data-menu:logo>
-        <img class="menu__logo-img" alt="logo" src="{{content.logo}}"/>
+        <img class="menu__logo-img" alt="{{home.logo.alt}}" src="{{home.logo.url}}" title="{{home.logo.title}}"/>
     </figure>    
-    <img data-menu:controll class="menu__controll" alt="menu controll" src="{{content.arrow}}" />
+    <img data-menu:controll class="menu__controll" alt="menu controll" src="{{home.logoMenuArrow.url}}" />
     {% include "templates/_includes/general-info.html" %}   
     {% include "templates/_includes/spot-menu.html" %}
     {% include "templates/_includes/create-session.html" %}
