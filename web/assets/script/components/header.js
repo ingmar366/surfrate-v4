@@ -32,10 +32,9 @@ _surfrate.components.Header = class Header extends _surfrate.components.Base {
     });
     this.listen(this.elements.login, "click", this.loginUser);
 
-    const url = new URLSearchParams(window.href);
-    console.log(url);
+    const url = new URLSearchParams(window.location.search);
+    console.log(url.get("state"));
     if (url.get("state")) {
-      console.log(`hello`);
       const res = await this.auth0Client.handleRedirectCallback();
       console.log(res);
     }
@@ -45,7 +44,7 @@ _surfrate.components.Header = class Header extends _surfrate.components.Base {
   loginUser = () => {
     this.auth0Client.loginWithRedirect({
       authorizationParams: {
-        redirect_uri: window.location.origin,
+        redirect_uri: `${window.location.origin}`,
       },
     });
   };
