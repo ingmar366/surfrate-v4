@@ -1,4 +1,5 @@
 const User = require("../schemas/userSchema");
+const { validateToken } = require("../utils/jwt");
 
 exports.createUser = async ({ set, body }) => {
   try {
@@ -19,4 +20,9 @@ exports.createUser = async ({ set, body }) => {
 exports.getUser = (context) => {
   console.log(context);
   return "hello";
+};
+
+exports.jwtToken = async ({ jwtToken }) => {
+  const token = await jwtToken.sign("ingmar.m.meijer@gmail.com");
+  validateToken(token, jwtToken);
 };

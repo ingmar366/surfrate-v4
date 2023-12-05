@@ -9,4 +9,6 @@ exports.userRoutes = (app) =>
         body: userModel.user, //required body to make request
       })
       .get("", userController.getUser)
+      .get("/jwt", userController.jwtToken)
   );
+// .group("api/v1/user/jwt", (group) => group.get(""));

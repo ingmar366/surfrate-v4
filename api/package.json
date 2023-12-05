@@ -9,6 +9,7 @@
     "deploy": "elysia-lambda --config elysia-lambda.yaml"
   },
   "dependencies": {
+    "@elysiajs/jwt": "^0.7.0",
     "dotenv": "^16.3.1",
     "elysia": "^0.7.17",
     "elysia-lambda": "^0.0.7",
