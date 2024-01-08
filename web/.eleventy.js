@@ -1,6 +1,5 @@
 const nunjucksConfig = require("./lib/nunjucks");
 const htmlmin = require("html-minifier");
-// test
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addTransform("htmlmin", (content, outputPath) => {
@@ -12,8 +11,6 @@ module.exports = function (eleventyConfig) {
       });
     }
   });
-
-  eleventyConfig.addPassthroughCopy({ "auth_config.json": "auth_config.json" });
 
   Object.entries(nunjucksConfig.filters).forEach(([key, value]) =>
     eleventyConfig.addNunjucksFilter(key, value)

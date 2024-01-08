@@ -1,8 +1,15 @@
-.header > button {
-  position: fixed;
+.header__buttons {
   right: 2rem;
   top: 2rem;
+  position: fixed;
   z-index: 1000;
-  color: white;
-  background-color: lighten($color-main, 12%);
+  & > a {
+    position: fixed;
+    right: 2rem;
+    top: 2rem;
+    z-index: 1000;
+    color: white;
+    background-color: lighten($color-main, 12%);
+    @include base-button;
+  }
 }
