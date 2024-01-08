@@ -10,7 +10,15 @@ _surfrate.components.Header = class Header extends _surfrate.components.Base {
     this.elements = elements;
     this.params = params;
 
-    this.getConfig();
+    // this.getConfig();
+
+    // this.toggleLoginLogout();
+    // console.log(supertokens.init);
+
+    supertokens.init({
+      // learn more about this on https://supertokens.com/docs/thirdpartyemailpassword/appinfo
+      apiDomain: "http://localhost:3000",
+    });
 
     this.toggleLoginLogout();
     netlifyIdentity.on("login", this.getUserSpots);
