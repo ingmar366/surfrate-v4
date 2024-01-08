@@ -76,7 +76,7 @@ const watch = () => {
 gulp.task(
   "default",
   gulp.series(
-    gulp.parallel(clearBuildDir, buildIndexFiles),
+    gulp.parallel(buildIndexFiles),
     gulp.parallel(buildScript, buildStyles)
   )
 );
