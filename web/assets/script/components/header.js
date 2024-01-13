@@ -10,43 +10,11 @@ _surfrate.components.Header = class Header extends _surfrate.components.Base {
     this.elements = elements;
     this.params = params;
 
-    // this.getConfig();
-
-    // this.toggleLoginLogout();
-
-    this.toggleLoginLogout();
     netlifyIdentity.on("login", this.getUserSpots);
     netlifyIdentity.on("logout", this.onLogout);
     if (localStorage.getItem("gotrue.user") && !localStorage.getItem("spots"))
       this.getUserSpots();
   }
-
-  loginHandler = () => {
-    this.toggleLoginLogout();
-    // this.getUserSpots();
-  };
-
-  getConfig = async () => {
-    // netlifyIdentity.init();
-    // this.listen(this.elements.login, "click", this.loginUser);
-
-    const url = new URLSearchParams(window.location.search);
-    console.log(url.get("state"));
-
-    if (url.get("state")) {
-      const res = await this.auth0Client.handleRedirectCallback();
-      console.log(res);
-    }
-    return;
-  };
-
-  loginUser = () => {
-    this.auth0Client.loginWithRedirect({
-      authorizationParams: {
-        redirect_uri: `${window.location.origin}`,
-      },
-    });
-  };
 
   getUserSpots = async () => {
     const result = await this.fetching(this.params.path + "/spot", "get").catch(

@@ -1,5 +1,6 @@
 .general-info {
   padding: 2rem;
+  display: none;
   & > h3 {
     text-align: center;
     margin-bottom: 1.6rem;
@@ -11,6 +12,10 @@
     font-weight: 300;
     margin-bottom: 1.2rem;
   }
+}
+
+.menu[data-visible="general"] > .general-info {
+  display: inline-block;
 }
 
 .general-info__signup {

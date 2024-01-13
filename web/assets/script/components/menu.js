@@ -12,16 +12,13 @@ _surfrate.components.Menu = class Menu extends _surfrate.components.Base {
 
     this.listen(elements.controll, "click", this.menuControll);
 
-    localStorage.getSpots().then((res) => res && this.toggleInformation());
-
-    setTimeout(
-      () =>
-        this.listen(
-          document.body,
-          ["_surfrate.user.login", "_surfrate.user.logout"],
-          this.toggleInformation
-        ),
-      100
+    this.listen(document.body, "_surfrate.user.login", () => {
+      this.root.dataset.visible = "spots";
+    });
+    this.listen(
+      document.body,
+      "_surfrate.user.logout",
+      () => (this.root.visible = "general")
     );
   }
 
@@ -36,9 +33,5 @@ _surfrate.components.Menu = class Menu extends _surfrate.components.Base {
         this.root.dataset.state = "closed";
       }, 400);
     }
-  };
-
-  toggleInformation = () => {
-    this.elements.information.toggleAttribute("hidden");
   };
 };

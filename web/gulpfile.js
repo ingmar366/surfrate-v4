@@ -63,11 +63,11 @@ const buildStyles = () => {
 };
 
 const watch = () => {
-  gulp.watch("./assets/styles", async () => {
+  gulp.watch("./assets/styles/**/*.scss", async () => {
     await del(glob.sync("./build/**/*.scss"));
     buildStyles();
   });
-  gulp.watch("./assets/script", async () => {
+  gulp.watch("./assets/script/**/*.js", async () => {
     await del(glob.sync("./build/**/*.js"));
     buildScript();
   });
@@ -76,7 +76,7 @@ const watch = () => {
 gulp.task(
   "default",
   gulp.series(
-    gulp.parallel(buildIndexFiles),
+    gulp.parallel(clearBuildDir, buildIndexFiles),
     gulp.parallel(buildScript, buildStyles)
   )
 );

@@ -2,6 +2,11 @@
   padding: 1rem;
   display: grid;
   gap: 2rem;
+  display: none;
+}
+
+.menu[data-visible="spots"] > .spot-menu {
+  display: grid;
 }
 
 .spot-menu__select {

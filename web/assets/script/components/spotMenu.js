@@ -14,20 +14,6 @@ _surfrate.components.SpotMenu = class SpotMenu extends (
 
     this.listen(elements.newSpot, "click", this.activateNewSpot);
     this.listen(document.body, "_surfrate.spot.created", this.activateNewSpot);
-
-    localStorage
-      .getSpots()
-      .then((spots) => spots && this.root.removeAttribute("hidden"));
-
-    setTimeout(
-      () =>
-        this.listen(
-          document.body,
-          ["_surfrate.user.login", "_surfrate.user.logout"],
-          () => this.root.toggleAttribute("hidden")
-        ),
-      50
-    );
   }
 
   activateNewSpot = () => {

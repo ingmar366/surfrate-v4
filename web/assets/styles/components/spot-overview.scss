@@ -1,11 +1,11 @@
 .spot-overview {
   display: grid;
   gap: 1rem;
-  padding-left: 3rem;
+  margin: 0 3rem;
 }
 
-.spot-overview__item {
-  display: flex;
+.spot-overview__button > span {
+  flex-grow: 3;
 }
 
 @mixin spot-overview-before-after {
@@ -15,10 +15,13 @@
 }
 
 .spot-overview__button {
-  width: calc(100% + 4rem);
+  margin: 0 auto;
+  display: flex;
+  width: 100%;
+  justify-items: center;
+  align-items: center;
+  max-width: 50rem;
   border-radius: 3px;
-  clip-path: polygon(10% 0, 120% 0, 120% 120%, 10% 120%, 15% 50%);
-  translate: -4.5rem;
   position: relative;
   z-index: 1;
   height: 5rem;
@@ -59,7 +62,6 @@
   color: $color-neutral;
   background: $color-main;
   display: flex;
-  margin: auto;
   justify-content: center;
   align-items: center;
   z-index: 100;
