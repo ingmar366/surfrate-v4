@@ -23,6 +23,19 @@ Storage.prototype.token = function () {
   return JSON.parse(this.getItem("gotrue.user"))?.token?.["access_token"];
 };
 
+HTMLInputElement.prototype.setChecked = function (checked) {
+  const event = new Event("change", { bubbles: true });
+  this.checked = checked;
+  switch (this.type) {
+    case "checkbox":
+      this.dispatchEvent(event);
+      break;
+    case "radio":
+      checked && this.dispatchEvent(event);
+      break;
+  }
+};
+
 // Prototype extension to make XPathResult iterable:
 // Source: https://www.anycodings.com/1questions/1320706/how-to-use-arrayfrom-with-a-xpathresult
 XPathResult.prototype[Symbol.iterator] = function* () {

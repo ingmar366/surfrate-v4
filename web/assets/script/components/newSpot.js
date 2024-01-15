@@ -10,17 +10,16 @@ _surfrate.components.NewSpot = class NewSpot extends _surfrate.components.Base {
     this.elements = elements;
     this.params = params;
 
-    this.listen(document, "_surfrate.activate.new-newspot", this.show);
-    this.listen(document, "_surfrate.activate.spots", () => {
-      this.root.setAttribute("hidden", "");
-      this.reset();
-    });
+    this.listen(
+      document.body,
+      "change",
+      ({ target }) => target.id == "spot-menu-new-spot" && this.show()
+    );
   }
 
   show = () => {
     this.dispatch(this.root, "_surfrate.map.click");
     this.listen(document, "_surfrate.map.location", this.spotHandler);
-    this.root.removeAttribute("hidden");
   };
 
   spotHandler = ({ detail }) => {

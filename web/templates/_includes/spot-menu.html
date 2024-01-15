@@ -1,7 +1,9 @@
-<div class="spot-menu" data-component="SpotMenu">
+<div class="spot-menu">
     <div class="spot-menu__select">
-        <button data-active data-spot-menu:spots>Spots</button>
-        <button data-spot-menu:new-spot>New Spot</button>
+        <input id="spot-menu-spots" type="radio" name="spot-menu" checked hidden></input>
+        <label for="spot-menu-spots">Spots</label>
+        <input id="spot-menu-new-spot" type="radio" name="spot-menu" hidden></input>
+        <label for="spot-menu-new-spot">New Spot</label>
     </div>
     {% include "templates/_includes/create-spot.html" %}
     {% include "templates/_includes/spot-overview.html" %}

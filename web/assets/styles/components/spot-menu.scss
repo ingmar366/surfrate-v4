@@ -2,11 +2,6 @@
   padding: 1rem;
   display: grid;
   gap: 2rem;
-  display: none;
-}
-
-.menu[data-visible="spots"] > .spot-menu {
-  display: grid;
 }
 
 .spot-menu__select {
@@ -15,7 +10,21 @@
   justify-content: center;
   gap: 2rem;
 
-  & button {
+  &:has(#spot-menu-spots:checked) ~ .spot-overview {
+    display: grid;
+  }
+
+  &:has(#spot-menu-new-spot:checked) ~ .create-spot {
+    display: block;
+  }
+
+  & > input:checked + label {
+    &:after {
+      animation: slide-in 0.2s forwards;
+    }
+  }
+
+  & > label {
     text-transform: uppercase;
     font-size: 1.4rem;
     letter-spacing: 0.1rem;
@@ -40,10 +49,6 @@
       }
     }
   }
-}
-
-[data-active]:after {
-  animation: slide-in 0.2s forwards;
 }
 
 @keyframes slide-in {
