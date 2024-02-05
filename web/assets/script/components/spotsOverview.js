@@ -12,31 +12,33 @@ _surfrate.components.SpotOverview = class SpotOverview extends (
     this.elements = elements;
     this.params = params;
 
-    this.listen(document, "_surfrate.activate.new-newspot", () =>
-      this.root.setAttribute("hidden", "")
-    );
-    this.listen(document, "_surfrate.activate.spots", () =>
-      this.root.removeAttribute("hidden")
+    this.listen(document.body, "_surfrate.map.spot.click", ({ detail }) =>
+      Array.from(this.root.children).forEach((el) =>
+        el[el?.dataset?.id == detail.id ? "setAttribute" : "removeAttribute"](
+          "selected",
+          ""
+        )
+      )
     );
 
     this.listen(document.body, "_surfrate.spot.created", this.renderSpots);
-
     this.renderSpots();
   }
 
   renderSpots = () => {
     localStorage.getSpots().then((spots) => {
       if (!spots) return;
-
       const template = this.elements.template.innerHTML;
       const renderSpots = spots
-        .map(({ location, name }, index) => {
+        .map(({ location, name, id }, index) => {
           const [lng, lat] = location.coordinates;
-          const coordinates = `data-coordinates="${lat},${lng}"`;
+          const coordinates = `data-coordinates="${lat},${lng}" data-id="${id}"`;
           return template
-            .replace("name", name)
+            .replace("spotName", name)
             .replace("number", index)
-            .replace('coordinates=""', coordinates);
+            .replace('coordinates=""', coordinates)
+            .replaceAll('data-surfspot-id=""', `id=${id}`)
+            .replace('for=""', `for="${id}"`);
         })
         .join("\n");
       this.root.innerHTML = renderSpots;

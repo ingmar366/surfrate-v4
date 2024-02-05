@@ -1,5 +1,4 @@
 .spot-overview {
-  // display: grid;
   display: none;
   gap: 1rem;
   margin: 0 3rem;
@@ -16,14 +15,12 @@
 }
 
 .spot-overview__button {
-  margin: 0 auto;
   display: flex;
-  width: 100%;
-  justify-items: center;
   align-items: center;
   max-width: 50rem;
   border-radius: 3px;
   position: relative;
+  text-align: center;
   z-index: 1;
   height: 5rem;
   filter: drop-shadow(1px -2px 5px rgba(#000000, 0.7));
@@ -49,11 +46,15 @@
   &:hover {
     cursor: pointer;
   }
+
+  &:has(input:checked) {
+    background: linear-gradient(to right, #00bcd4, #0097a7);
+  }
 }
 
-[selected] .spot-overview__button {
-  background: linear-gradient(to right, #00bcd4, #0097a7);
-}
+// [selected] .spot-overview__button {
+//   background: linear-gradient(to right, #00bcd4, #0097a7);
+// }
 
 .spot-overview__circle {
   min-width: 4rem;

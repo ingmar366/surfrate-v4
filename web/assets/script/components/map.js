@@ -23,7 +23,7 @@ _surfrate.components.Map = class Map extends _surfrate.components.Base {
   initializeMap = () => {
     this.map = L.map(this.root, {});
 
-    L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(this.map);
@@ -47,7 +47,18 @@ _surfrate.components.Map = class Map extends _surfrate.components.Base {
     if (!spots) return;
     spots.forEach((spot) => {
       const [lng, lat] = spot.location.coordinates;
-      new L.marker([lat, lng], { title: spot.name }).addTo(this.map);
+      new L.marker([lat, lng], {
+        title: spot.name,
+        id: spot.id,
+      })
+        .addTo(this.map)
+        .on("click", ({ target }) => {
+          const { lat, lng } = target._latlng;
+          this.map.flyTo([lat, lng], 13);
+          this.dispatch(this.root, "_surfrate.map.spot.click", {
+            id: target.options.id,
+          });
+        });
     });
   };
 

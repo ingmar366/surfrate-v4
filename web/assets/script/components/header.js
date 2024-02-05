@@ -12,8 +12,6 @@ _surfrate.components.Header = class Header extends _surfrate.components.Base {
 
     netlifyIdentity.on("login", this.getUserSpots);
     netlifyIdentity.on("logout", this.onLogout);
-    if (localStorage.getItem("gotrue.user") && !localStorage.getItem("spots"))
-      this.getUserSpots();
   }
 
   getUserSpots = async () => {
